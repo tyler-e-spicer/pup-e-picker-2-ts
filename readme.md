@@ -2,7 +2,7 @@
 
 In this assignment we will be re-building our dog-favoriting app called Pup- E-Picker. Don't even try this assignment till you've done the first one please 🙏.
 
-Since you know how the app should look in feel let's highlight the differences between this app and the last one.
+Since you know how the app should look and feel let's highlight the differences between this app and the last one.
 
 1. This app will be built using ONLY functional components and hooks
    a. This means you will not be using any class components
