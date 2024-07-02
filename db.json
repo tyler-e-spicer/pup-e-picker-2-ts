@@ -8,20 +8,6 @@
       "id": 7
     },
     {
-      "name": "Lambert",
-      "image": "/src/assets/chihuahua.avif",
-      "description": "drive reek Marvin compress executive Coordinator Track bluetooth",
-      "isFavorite": false,
-      "id": 14
-    },
-    {
-      "name": "Trudie",
-      "image": "/src/assets/boxer.png",
-      "description": "connecting blue National Movies Interactions ack Tandem Shirt",
-      "isFavorite": true,
-      "id": 16
-    },
-    {
       "name": "Meaghan",
       "image": "/src/assets/dalmation.png",
       "description": "lux Manager North applications Rufiyaa",
@@ -32,7 +18,7 @@
       "name": "Vallie",
       "image": "/src/assets/chihuahua.avif",
       "description": "Lead synergistic noisy operating Passenger female Salad Rubber",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 18
     },
     {
@@ -43,11 +29,25 @@
       "id": 19
     },
     {
-      "name": "Tyler ",
-      "description": "The bestest boy...",
-      "image": "/src/assets/corgi.png",
+      "name": "Eric",
+      "description": "Ruff!",
+      "image": "/src/assets/cowardly.png",
       "isFavorite": false,
-      "id": 20
+      "id": 21
+    },
+    {
+      "name": "Alex",
+      "description": "Works like a dog. ",
+      "image": "/src/assets/dalmation.png",
+      "isFavorite": false,
+      "id": 22
+    },
+    {
+      "name": "Toast",
+      "description": "Gets his name from his fave food. ",
+      "image": "/src/assets/boxer.jpeg",
+      "isFavorite": false,
+      "id": 23
     }
   ]
 }

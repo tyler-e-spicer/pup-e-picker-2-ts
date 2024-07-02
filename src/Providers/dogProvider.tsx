@@ -52,13 +52,15 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
         toast.success("The dog was deleted successfully");
       })
       .catch((error) => {
+        setDogsList(dogsList);
+        toast.error("Woof. Could not delete this dog.");
         console.error(`Error deleting dog with ID ${dogId}:`, error);
       });
   };
 
   const handleUpdateDog = (dogId: number, updatedDog: Partial<Dog>): void => {
     const fullDog = dogsList.find((dog) => dog.id === dogId);
-    
+
     if (!fullDog) {
       console.error(`Dog with ID ${dogId} not found.`);
       return;
