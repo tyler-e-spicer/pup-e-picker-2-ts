@@ -9,13 +9,11 @@ const checkResponse = (message: string) => (res: Response) => {
 };
 
 const getAllDogs = () => {
-  return fetch(`${baseURL}/dogs`).then(
-    checkResponse("Could not fetch all dogs.")
-  );
+  return fetch(`${baseURL}`).then(checkResponse("Could not fetch all dogs."));
 };
 
 const postDog = (newDog: Omit<Dog, "id">) => {
-  return fetch(`${baseURL}/dogs`, {
+  return fetch(`${baseURL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,14 +22,14 @@ const postDog = (newDog: Omit<Dog, "id">) => {
   }).then(checkResponse("Could not create dog."));
 };
 const deleteDogRequest = (dogId: number) => {
-  return fetch(`${baseURL}/dogs/${dogId}`, {
+  return fetch(`${baseURL}/${dogId}`, {
     method: "DELETE",
   }).then(checkResponse("Could not delete dog."));
 };
 
 const patchFavoriteForDog = (dogId: number, updatedDog: Partial<Dog>) => {
-  return fetch(`${baseURL}/dogs/${dogId}`, {
-    method: "PUT",
+  return fetch(`${baseURL}/${dogId}`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },

@@ -21,14 +21,16 @@ export const Dogs = () => {
   return (
     <>
       {dogsToRender.map((dog) => {
-        <DogCard
-          key={dog.name}
-          dog={dog}
-          isLoading={isLoading}
-          onHeartClick={handleUpdateDog}
-          onEmptyHeartClick={handleUpdateDog}
-          onTrashIconClick={handleDeleteDog}
-        />;
+        return (
+          <DogCard
+            key={dog.name}
+            dog={dog}
+            isLoading={isLoading}
+            onHeartClick={handleUpdateDog}
+            onEmptyHeartClick={handleUpdateDog}
+            onTrashIconClick={handleDeleteDog}
+          />
+        );
       })}
     </>
   );

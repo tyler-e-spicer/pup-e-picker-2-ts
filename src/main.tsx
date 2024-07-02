@@ -5,10 +5,13 @@ import "./App.css";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
 import { App } from "./App";
+import { SectionContextProvider } from "./Providers/sectionProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Toaster />
-    <App />
+    <SectionContextProvider>
+      <App />
+    </SectionContextProvider>
   </React.StrictMode>
 );

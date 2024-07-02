@@ -28,7 +28,9 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${"active"}`}
+            className={`selector ${
+              activeSection === "favorited" ? "active" : ""
+            }`}
             onClick={() => {
               toggleSection("favorited");
             }}
@@ -38,7 +40,9 @@ export const Section = ({
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${""}`}
+            className={`selector ${
+              activeSection === "unfavorited" ? "active" : ""
+            }`}
             onClick={() => {
               toggleSection("unfavorited");
             }}
@@ -46,7 +50,7 @@ export const Section = ({
             unfavorited ( {unfavoritedDogs.length} )
           </div>
           <div
-            className={`selector ${""}`}
+            className={`selector ${activeSection === "create" ? "active" : ""}`}
             onClick={() => {
               toggleSection("create");
             }}

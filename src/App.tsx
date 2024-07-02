@@ -17,12 +17,7 @@ export function App() {
       <DogsContextProvider>
         <Section
           label={
-            !isCreatingDog && activeSection
-              ? `Dogs: ${
-                  activeSection[0].toUpperCase() +
-                  activeSection.substring(1).toLowerCase()
-                } Dogs`
-              : ""
+            !isCreatingDog && activeSection ? `Dogs: ${activeSection} dogs` : ""
           }
         >
           {!isCreatingDog && <Dogs />}

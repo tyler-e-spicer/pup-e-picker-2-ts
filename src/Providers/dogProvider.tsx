@@ -45,7 +45,7 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
   }, []);
 
   const handleDeleteDog = (dogId: number): void => {
-    setIsLoading(true);
+    setDogsList(dogsList.filter((dog) => dog.id !== dogId));
     deleteDogRequest(dogId)
       .then(fetchDogs)
       .then(() => {
@@ -53,27 +53,27 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
       })
       .catch((error) => {
         console.error(`Error deleting dog with ID ${dogId}:`, error);
-      })
-      .finally(() => {
-        setDogsList(dogsList);
-        setIsLoading(false);
       });
   };
 
   const handleUpdateDog = (dogId: number, updatedDog: Partial<Dog>): void => {
-    setIsLoading(true);
+    const fullDog = dogsList.find((dog) => dog.id === dogId);
+    
+    if (!fullDog) {
+      console.error(`Dog with ID ${dogId} not found.`);
+      return;
+    }
+    const dogToUpdate = { ...fullDog, ...updatedDog };
+
+    setDogsList(dogsList.map((dog) => (dog.id === dogId ? dogToUpdate : dog)));
     patchFavoriteForDog(dogId, updatedDog)
-      .then(fetchDogs)
       .then(() => {
         toast.success("The dog was updated successfully");
       })
       .catch((error) => {
+        setDogsList(dogsList);
         toast.error(`Error updating dog with ID ${dogId}:`);
         console.error("Error creating dog:", error);
-      })
-      .finally(() => {
-        setDogsList(dogsList);
-        setIsLoading(false);
       });
   };
 
@@ -89,7 +89,6 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
         console.error("Error adding dog:", error);
       })
       .finally(() => {
-        setDogsList(dogsList);
         setIsLoading(false);
       });
   };

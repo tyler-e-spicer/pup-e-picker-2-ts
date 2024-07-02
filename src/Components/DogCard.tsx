@@ -23,14 +23,16 @@ export const DogCard = ({
       {isFavorite ? (
         <UnfavoriteButton
           onClick={() => {
-            onHeartClick(id, { isFavorite });
+            onHeartClick(id, { isFavorite: false });
           }}
           disabled={isLoading}
         />
       ) : (
         <FavoriteButton
           onClick={() => {
-            onEmptyHeartClick(id, { isFavorite });
+            onEmptyHeartClick(id, {
+              isFavorite: true,
+            });
           }}
           disabled={isLoading}
         />
