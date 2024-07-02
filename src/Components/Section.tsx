@@ -1,4 +1,7 @@
 import { ReactNode } from "react";
+import { useSectionProvider } from "../Providers/sectionProvider";
+import { useDogsProvider } from "../Providers/dogProvider";
+import { ActiveTab } from "../types";
 
 export const Section = ({
   label,
@@ -8,6 +11,17 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
+  const { activeSection, setActiveSection } = useSectionProvider();
+  const { dogsList } = useDogsProvider();
+
+  const favoritedDogs = dogsList.filter((dog) => dog.isFavorite);
+  const unfavoritedDogs = dogsList.filter((dog) => !dog.isFavorite);
+
+  const handleChangeSection = (sectionName: ActiveTab) => {
+    const newTab = sectionName !== activeSection ? sectionName : "all";
+    setActiveSection(newTab);
+  };
+
   return (
     <section id="main-section">
       <div className="container-header">
@@ -17,25 +31,25 @@ export const Section = ({
           <div
             className={`selector ${"active"}`}
             onClick={() => {
-              alert("click favorited");
+              handleChangeSection("favorited");
             }}
           >
-            favorited ( {0} )
+            favorited ( {favoritedDogs.length} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${""}`}
             onClick={() => {
-              alert("click unfavorited");
+              handleChangeSection("unfavorited");
             }}
           >
-            unfavorited ( {10} )
+            unfavorited ( {unfavoritedDogs.length} )
           </div>
           <div
             className={`selector ${""}`}
             onClick={() => {
-              alert("clicked create dog");
+              handleChangeSection("create");
             }}
           >
             create dog
