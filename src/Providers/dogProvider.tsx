@@ -19,9 +19,9 @@ type DogContextProviderProps = {
 type DogContext = {
   dogsList: Dog[];
   isLoading: boolean;
-  handleUpdateDog: (dogId: number, updatedDog: Partial<Dog>) => Promise<void>;
-  handleDeleteDog: (dogId: number) => Promise<void>;
-  handleAddDog: (dog: Omit<Dog, "id">) => Promise<void>;
+  handleUpdateDog: (dogId: number, updatedDog: Partial<Dog>) => void;
+  handleDeleteDog: (dogId: number) => void;
+  handleAddDog: (dog: Omit<Dog, "id">) => void;
 };
 
 const { getAllDogs, patchFavoriteForDog, postDog, deleteDogRequest } = Requests;
@@ -44,9 +44,9 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
     void fetchDogs();
   }, []);
 
-  const handleDeleteDog = (dogId: number) => {
+  const handleDeleteDog = (dogId: number): void => {
     setIsLoading(true);
-    return deleteDogRequest(dogId)
+    deleteDogRequest(dogId)
       .then(fetchDogs)
       .then(() => {
         toast.success("The dog was deleted successfully");
@@ -60,9 +60,9 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
       });
   };
 
-  const handleUpdateDog = (dogId: number, updatedDog: Partial<Dog>) => {
+  const handleUpdateDog = (dogId: number, updatedDog: Partial<Dog>): void => {
     setIsLoading(true);
-    return patchFavoriteForDog(dogId, updatedDog)
+    patchFavoriteForDog(dogId, updatedDog)
       .then(fetchDogs)
       .then(() => {
         toast.success("The dog was updated successfully");
@@ -77,9 +77,9 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
       });
   };
 
-  const handleAddDog = (dog: Omit<Dog, "id">) => {
+  const handleAddDog = (dog: Omit<Dog, "id">): void => {
     setIsLoading(true);
-    return postDog(dog)
+    postDog(dog)
       .then(fetchDogs)
       .then(() => {
         toast.success("The dog was added successfully");

@@ -5,16 +5,16 @@ import { UnfavoriteButton } from "./UnfavoriteButton";
 
 // ! Do Not Make Changes To This File
 export const DogCard = ({
-  dog: { name, image, description, isFavorite },
+  dog: { id, name, image, description, isFavorite },
   onTrashIconClick,
   onEmptyHeartClick,
   onHeartClick,
   isLoading,
 }: {
   dog: Dog;
-  onTrashIconClick: () => void;
-  onEmptyHeartClick: () => void;
-  onHeartClick: () => void;
+  onTrashIconClick: (dogId: number) => void;
+  onEmptyHeartClick: (dogId: number, updatedDog: Partial<Dog>) => void;
+  onHeartClick: (dogId: number, updatedDog: Partial<Dog>) => void;
   isLoading: boolean;
 }) => {
   return (
@@ -23,14 +23,14 @@ export const DogCard = ({
       {isFavorite ? (
         <UnfavoriteButton
           onClick={() => {
-            onHeartClick();
+            onHeartClick(id, { isFavorite });
           }}
           disabled={isLoading}
         />
       ) : (
         <FavoriteButton
           onClick={() => {
-            onEmptyHeartClick();
+            onEmptyHeartClick(id, { isFavorite });
           }}
           disabled={isLoading}
         />
@@ -39,7 +39,7 @@ export const DogCard = ({
       {/* Use this button to delete a puppy :( */}
       <TrashButton
         onClick={() => {
-          onTrashIconClick();
+          onTrashIconClick(id);
         }}
         disabled={isLoading}
       />

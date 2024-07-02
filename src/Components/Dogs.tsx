@@ -1,11 +1,35 @@
-// Right now these dogs are constant, but in reality we should be getting these from our server
-// Todo: Refactor to get rid of props (THERE SHOULD BE NO PROPS DRILLING ON THIS COMPONENT)
-export const Dogs = () =>
-  // no props allowed
-  {
-    return (
-      //  the "<> </>"" are called react fragments, it's like adding all the html inside
-      // without adding an actual html element
-      <>{/* Make all the dog cards show up here */}</>
-    );
-  };
+import { useDogsProvider } from "../Providers/dogProvider";
+import { useSectionProvider } from "../Providers/sectionProvider";
+import { DogCard } from "./DogCard";
+
+export const Dogs = () => {
+  const { dogsList, isLoading, handleDeleteDog, handleUpdateDog } =
+    useDogsProvider();
+  const { activeSection } = useSectionProvider();
+
+  const dogsToRender = (() => {
+    switch (activeSection) {
+      case "favorited":
+        return dogsList.filter((dog) => dog.isFavorite);
+      case "unfavorited":
+        return dogsList.filter((dog) => !dog.isFavorite);
+      default:
+        return dogsList;
+    }
+  })();
+
+  return (
+    <>
+      {dogsToRender.map((dog) => {
+        <DogCard
+          key={dog.name}
+          dog={dog}
+          isLoading={isLoading}
+          onHeartClick={handleUpdateDog}
+          onEmptyHeartClick={handleUpdateDog}
+          onTrashIconClick={handleDeleteDog}
+        />;
+      })}
+    </>
+  );
+};

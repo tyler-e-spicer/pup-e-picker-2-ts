@@ -7,7 +7,6 @@ export const Section = ({
   label,
   children,
 }: {
-  // No more props than these two allowed
   label: string;
   children: ReactNode;
 }) => {
@@ -17,7 +16,7 @@ export const Section = ({
   const favoritedDogs = dogsList.filter((dog) => dog.isFavorite);
   const unfavoritedDogs = dogsList.filter((dog) => !dog.isFavorite);
 
-  const handleChangeSection = (sectionName: ActiveTab) => {
+  const toggleSection = (sectionName: ActiveTab) => {
     const newTab = sectionName !== activeSection ? sectionName : "all";
     setActiveSection(newTab);
   };
@@ -31,7 +30,7 @@ export const Section = ({
           <div
             className={`selector ${"active"}`}
             onClick={() => {
-              handleChangeSection("favorited");
+              toggleSection("favorited");
             }}
           >
             favorited ( {favoritedDogs.length} )
@@ -41,7 +40,7 @@ export const Section = ({
           <div
             className={`selector ${""}`}
             onClick={() => {
-              handleChangeSection("unfavorited");
+              toggleSection("unfavorited");
             }}
           >
             unfavorited ( {unfavoritedDogs.length} )
@@ -49,7 +48,7 @@ export const Section = ({
           <div
             className={`selector ${""}`}
             onClick={() => {
-              handleChangeSection("create");
+              toggleSection("create");
             }}
           >
             create dog
