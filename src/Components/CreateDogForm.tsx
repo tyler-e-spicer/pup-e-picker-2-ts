@@ -1,13 +1,13 @@
 import { FormEvent, useState } from "react";
 import { dogPictures } from "../dog-pictures";
-import { useDogsProvider } from "../Providers/dogProvider";
+import { useDogs } from "../Hooks/providerHooks";
 
 export const CreateDogForm = () => {
   const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  const { handleAddDog, isLoading } = useDogsProvider();
+  const { handleAddDog, isLoading } = useDogs();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

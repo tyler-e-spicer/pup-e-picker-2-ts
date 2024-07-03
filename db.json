@@ -11,21 +11,14 @@
       "name": "Meaghan",
       "image": "/src/assets/dalmation.png",
       "description": "lux Manager North applications Rufiyaa",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 17
-    },
-    {
-      "name": "Vallie",
-      "image": "/src/assets/chihuahua.avif",
-      "description": "Lead synergistic noisy operating Passenger female Salad Rubber",
-      "isFavorite": false,
-      "id": 18
     },
     {
       "name": "Newton",
       "image": "/src/assets/blue-heeler.png",
       "description": "Planner maxime invoice ROI granular ouch Franc",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 19
     },
     {
@@ -48,6 +41,13 @@
       "image": "/src/assets/boxer.jpeg",
       "isFavorite": false,
       "id": 23
+    },
+    {
+      "name": "Tyler",
+      "description": "Woof! ",
+      "image": "/src/assets/corgi.png",
+      "isFavorite": true,
+      "id": 24
     }
   ]
 }

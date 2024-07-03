@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { useSectionProvider } from "../Providers/sectionProvider";
-import { useDogsProvider } from "../Providers/dogProvider";
+import { useSection } from "../Hooks/providerHooks";
+import { useDogs } from "../Hooks/providerHooks";
 import { ActiveTab } from "../types";
 
 export const Section = ({
@@ -10,8 +10,8 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { activeSection, setActiveSection } = useSectionProvider();
-  const { dogsList } = useDogsProvider();
+  const { activeSection, setActiveSection } = useSection();
+  const { dogsList } = useDogs();
 
   const favoritedDogs = dogsList.filter((dog) => dog.isFavorite);
   const unfavoritedDogs = dogsList.filter((dog) => !dog.isFavorite);

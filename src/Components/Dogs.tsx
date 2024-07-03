@@ -1,11 +1,10 @@
-import { useDogsProvider } from "../Providers/dogProvider";
-import { useSectionProvider } from "../Providers/sectionProvider";
+import { useDogs } from "../Hooks/providerHooks";
+import { useSection } from "../Hooks/providerHooks";
 import { DogCard } from "./DogCard";
 
 export const Dogs = () => {
-  const { dogsList, isLoading, handleDeleteDog, handleUpdateDog } =
-    useDogsProvider();
-  const { activeSection } = useSectionProvider();
+  const { dogsList, isLoading, handleDeleteDog, handleUpdateDog } = useDogs();
+  const { activeSection } = useSection();
 
   const dogsToRender = (() => {
     switch (activeSection) {

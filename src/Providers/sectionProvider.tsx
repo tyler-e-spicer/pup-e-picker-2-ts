@@ -3,7 +3,6 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
-  useContext,
   useState,
 } from "react";
 
@@ -14,7 +13,7 @@ type SectionContext = {
   setActiveSection: Dispatch<SetStateAction<ActiveTab>>;
 };
 
-const SectionContext = createContext({} as SectionContext);
+export const SectionContext = createContext({} as SectionContext);
 
 export const SectionContextProvider = ({
   children,
@@ -34,5 +33,3 @@ export const SectionContextProvider = ({
     </SectionContext.Provider>
   );
 };
-
-export const useSectionProvider = () => useContext(SectionContext);

@@ -1,10 +1,4 @@
-import {
-  useContext,
-  ReactNode,
-  createContext,
-  useState,
-  useEffect,
-} from "react";
+import { ReactNode, createContext, useState, useEffect } from "react";
 
 import { Dog } from "../types";
 
@@ -26,7 +20,7 @@ type DogContext = {
 
 const { getAllDogs, patchFavoriteForDog, postDog, deleteDogRequest } = Requests;
 
-const DogsContext = createContext({} as DogContext);
+export const DogsContext = createContext({} as DogContext);
 
 export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
   const [dogsList, setDogsList] = useState<Dog[]>([]);
@@ -109,5 +103,3 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
     </DogsContext.Provider>
   );
 };
-
-export const useDogsProvider = () => useContext(DogsContext);

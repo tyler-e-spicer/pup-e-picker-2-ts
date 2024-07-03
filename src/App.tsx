@@ -2,10 +2,10 @@ import { CreateDogForm } from "./Components/CreateDogForm";
 import { Dogs } from "./Components/Dogs";
 import { Section } from "./Components/Section";
 import { DogsContextProvider } from "./Providers/dogProvider";
-import { useSectionProvider } from "./Providers/sectionProvider";
+import { useSection } from "./Hooks/providerHooks";
 
 export function App() {
-  const { activeSection } = useSectionProvider();
+  const { activeSection } = useSection();
 
   const isCreatingDog = activeSection === "create";
 
