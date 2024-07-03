@@ -1,6 +1,7 @@
 import { Dog } from "./types";
 const baseURL = "http://localhost:3000/dogs";
 
+
 const checkResponse = (message: string) => (res: Response) => {
   if (!res.ok) {
     throw new Error(message);
