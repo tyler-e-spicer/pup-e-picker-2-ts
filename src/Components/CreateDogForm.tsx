@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { dogPictures } from "../dog-pictures";
 import { useDogs } from "../Hooks/providerHooks";
+import toast from "react-hot-toast";
 
 export const CreateDogForm = () => {
   const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
@@ -16,8 +17,14 @@ export const CreateDogForm = () => {
       description,
       image: selectedImage,
       isFavorite: false,
-    });
-    formReset();
+    })
+      .then(() => {
+        console.log("Resetting the form...");
+        formReset();
+      })
+      .catch(() => {
+        toast.error("Error adding dog");
+      });
   };
 
   const formReset = () => {
@@ -31,12 +38,14 @@ export const CreateDogForm = () => {
       <h4>Create a New Dog</h4>
       <label htmlFor="name">Dog Name</label>
       <input
+        value={name}
         type="text"
         disabled={isLoading}
         onChange={(e) => setName(e.target.value)}
       />
       <label htmlFor="description">Dog Description</label>
       <textarea
+        value={description}
         name=""
         id=""
         cols={80}
@@ -46,6 +55,7 @@ export const CreateDogForm = () => {
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
       <select
+        value={selectedImage}
         id=""
         onChange={(e) => {
           setSelectedImage(e.target.value);

@@ -25,29 +25,64 @@
       "name": "Eric",
       "description": "Ruff!",
       "image": "/src/assets/cowardly.png",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 21
     },
     {
       "name": "Alex",
       "description": "Works like a dog. ",
       "image": "/src/assets/dalmation.png",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 22
-    },
-    {
-      "name": "Toast",
-      "description": "Gets his name from his fave food. ",
-      "image": "/src/assets/boxer.jpeg",
-      "isFavorite": false,
-      "id": 23
     },
     {
       "name": "Tyler",
       "description": "Woof! ",
       "image": "/src/assets/corgi.png",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 24
+    },
+    {
+      "name": "Frans",
+      "description": "Not to be confused with France...",
+      "image": "/src/assets/chihuahua.avif",
+      "isFavorite": false,
+      "id": 25
+    },
+    {
+      "name": "Shelby",
+      "description": "Grrrr.",
+      "image": "/src/assets/dalmation.png",
+      "isFavorite": false,
+      "id": 26
+    },
+    {
+      "name": "Shelby 2",
+      "description": "double grrrr",
+      "image": "/src/assets/blue-heeler.png",
+      "isFavorite": false,
+      "id": 27
+    },
+    {
+      "name": "Tylerrrr",
+      "description": "Smiles a lot ",
+      "image": "/src/assets/corgi.png",
+      "isFavorite": true,
+      "id": 28
+    },
+    {
+      "name": "Super Dog",
+      "description": "Bark!",
+      "image": "/src/assets/chihuahua.avif",
+      "isFavorite": false,
+      "id": 29
+    },
+    {
+      "name": "Adam",
+      "description": "Adam",
+      "image": "/src/assets/chihuahua.avif",
+      "isFavorite": false,
+      "id": 30
     }
   ]
 }

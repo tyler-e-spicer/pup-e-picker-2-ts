@@ -15,7 +15,7 @@ type DogContext = {
   isLoading: boolean;
   handleUpdateDog: (dogId: number, updatedDog: Partial<Dog>) => void;
   handleDeleteDog: (dogId: number) => void;
-  handleAddDog: (dog: Omit<Dog, "id">) => void;
+  handleAddDog: (dog: Omit<Dog, "id">) => Promise<unknown>;
 };
 
 const { getAllDogs, patchFavoriteForDog, postDog, deleteDogRequest } = Requests;
@@ -27,7 +27,7 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchDogs = () => {
-    return getAllDogs()
+    getAllDogs()
       .then(setDogsList)
       .catch((err) => {
         console.error("Error fecthing dogs... ", err);
@@ -35,7 +35,7 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
   };
 
   useEffect(() => {
-    void fetchDogs();
+    fetchDogs();
   }, []);
 
   const handleDeleteDog = (dogId: number): void => {
@@ -59,6 +59,7 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
       console.error(`Dog with ID ${dogId} not found.`);
       return;
     }
+
     const dogToUpdate = { ...fullDog, ...updatedDog };
 
     setDogsList(dogsList.map((dog) => (dog.id === dogId ? dogToUpdate : dog)));
@@ -73,20 +74,23 @@ export const DogsContextProvider = ({ children }: DogContextProviderProps) => {
       });
   };
 
-  const handleAddDog = (dog: Omit<Dog, "id">): void => {
+  const handleAddDog = (dog: Omit<Dog, "id">): Promise<unknown> => {
     setIsLoading(true);
-    postDog(dog)
+    return postDog(dog)
       .then(fetchDogs)
       .then(() => {
         toast.success("The dog was added successfully");
       })
-      .catch((error) => {
-        toast.error("Failed to add the dog");
-        console.error("Error adding dog:", error);
-      })
       .finally(() => {
         setIsLoading(false);
       });
+    // .catch((error) => {
+    //   toast.error("Failed to add the dog");
+    //   console.error("Error adding dog:", error);
+    // })
+    // .finally(() => {
+    //   setIsLoading(false);
+    // });
   };
 
   return (
