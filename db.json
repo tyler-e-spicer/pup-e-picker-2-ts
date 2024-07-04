@@ -25,14 +25,14 @@
       "name": "Eric",
       "description": "Ruff!",
       "image": "/src/assets/cowardly.png",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 21
     },
     {
       "name": "Alex",
       "description": "Works like a dog. ",
       "image": "/src/assets/dalmation.png",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 22
     },
     {
